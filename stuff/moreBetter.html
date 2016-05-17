@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html onmousemove="tasteTheRainbow(event)">
+  <head>
+    <title>Hello World!</title>
+  
+    
+    <script>
+      function letThereBeColor(n,m,o) {
+        document.body.style.backgroundColor = n;
+        document.getElementById("blair").style.color = m;
+        document.getElementById("rob").style.color = o;
+      }
+      function toHexWithYou(n){    
+          n%=16;
+          if (n<10){ return n;}
+          else{ return String.fromCharCode(97+(n-10));}
+        }
+      function tasteTheRainbow (event){
+        var x = event.clientX % 255;
+        var y = event.clientY % 255;
+        var z = (x*y) % 255;        
+        var sub255 = [x,y,z];
+        var myHexigits = [];
+        var hexString1 = '#';
+        var hexString2 ='#';
+        var hexString3 ='#';        
+        for(i=0;i<sub255.length;i++){
+         var n = 1;
+         while (n*16 < sub255[i]) { n++; }         
+         myHexigits[2*i]= toHexWithYou(n-1);
+         myHexigits[2*i+1]= toHexWithYou(sub255[i]-((n-1)*16));                       
+         }        
+        for (i=0; i<myHexigits.length;i++){
+          hexString1+=myHexigits[i]; 
+          hexString2+=myHexigits[myHexigits.length-(i+1)];
+          hexString3+=myHexigits[((myHexigits.length+3)+i)%myHexigits.length];
+        }
+        letThereBeColor(hexString1,hexString2,hexString3);
+        }
+      
+    </script>
+  </head>
+  <body>
+    <div style="height:50px"></div>
+    <h1 id="rob" style="font-size:50px; text-align:center">ROB</h1>
+    <h1 id="blair" style="font-size:50px; text-align:center">BLAIR</h1>    
+  </body>
+</html>

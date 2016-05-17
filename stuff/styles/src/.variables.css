@@ -1,0 +1,11 @@
+:root{
+    /*Colours*/
+    --bodyBGC: pantone(663 C);
+    --appWrapperBGC: pantone(367 C);
+    --dashboardColour: pantone(7733 C);
+
+    --headerHeight: 4rem;
+    --footerHeight: 3rem;
+
+
+}
